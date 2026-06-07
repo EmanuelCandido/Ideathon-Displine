@@ -13,28 +13,30 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AlunoDTO {
 
-	 	private String nome;
+	private Long id;
 
-	    private String matricula;
+	private String nome;
 
-	    private String turma;
+	private String email;
 
-	    private String curso;
+	private String matricula;
 
-	    private String tipoUsuario;
+	private String turma;
 
-	    private LocalDate dataCadastro;
+	private String curso;
 
-	    public AlunoDTO(Aluno aluno) {
-	        this.nome = aluno.getNome();
-	        this.matricula = aluno.getMatricula();
-	        this.turma = aluno.getTurma();
-	        this.curso = aluno.getCurso();
-	        this.tipoUsuario = aluno.getTipoUsuario();
-	        this.dataCadastro = aluno.getDataCadastro();
-	    }
-	
-	
-	
-	
+	private String tipoUsuario;
+
+	private LocalDate dataCadastro;
+
+	public AlunoDTO(Aluno aluno) {
+		this.id = aluno.getId();
+		this.nome = aluno.getNome();
+		this.email = aluno.getEmail();
+		this.matricula = aluno.getMatricula();
+		this.turma = aluno.getTurma();
+		this.curso = aluno.getCurso();
+		this.tipoUsuario = aluno.getTipoUsuario();
+		this.dataCadastro = aluno.getDataCadastro();
+	}
 }

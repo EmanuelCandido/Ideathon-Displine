@@ -3,48 +3,40 @@ package com.sistemaIdeathon.displine.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.sistemaIdeathon.displine.DTO.ProfessorDTO;
-import com.sistemaIdeathon.displine.entity.Professor;
+import com.sistemaIdeathon.displine.DTO.ProfessorRequestDTO;
 import com.sistemaIdeathon.displine.service.ProfessorService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/Professor")
 public class ProfessorController {
 
-	@Autowired
+    @Autowired
     private ProfessorService service;
-  
+
     @GetMapping
     public List<ProfessorDTO> listar() {
         return service.listar();
     }
 
     @PostMapping
-    public Professor salvar(@RequestBody Professor professor) {
-        return service.salvar(professor);
+    public ProfessorDTO salvar(@Valid @RequestBody ProfessorRequestDTO dto) {
+        return service.salvar(dto);
     }
 
     @PutMapping("/{id}")
-    public Professor atualizar(@PathVariable Long id,
-                                @RequestBody Professor professor) {
-
-        return service.atualizar(id, professor);
+    public ProfessorDTO atualizar(@PathVariable Long id, @Valid @RequestBody ProfessorRequestDTO dto) {
+        return service.atualizar(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
         service.deletar(id);
+        return ResponseEntity.noContent().build();
     }
-	
-	
-	
 }

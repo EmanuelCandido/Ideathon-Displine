@@ -2,46 +2,47 @@ package com.sistemaIdeathon.displine.controller;
 
 import java.util.List;
 
+import com.sistemaIdeathon.displine.DTO.LoginRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import com.sistemaIdeathon.displine.entity.Usuario;
+import com.sistemaIdeathon.displine.DTO.UsuarioDTO;
+import com.sistemaIdeathon.displine.DTO.UsuarioRequestDTO;
 import com.sistemaIdeathon.displine.service.UsuarioService;
+
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/Usuario")
 public class UsuarioController {
 
-		@Autowired
-	    private UsuarioService service;
+	@Autowired
+	private UsuarioService service;
 
-	    @GetMapping
-	    public List<Usuario> listar() {
-	        return service.listar();
-	    }
+	@PostMapping("/login")
+	public UsuarioDTO login(@Valid @RequestBody LoginRequestDTO dto) {
+		return service.login(dto);
+	}
 
-	    @PostMapping
-	    public Usuario salvar(@RequestBody Usuario usuario) {
-	        return service.salvar(usuario);
-	    }
+	@GetMapping
+	public List<UsuarioDTO> listar() {
+		return service.listar();
+	}
 
-	    @PutMapping("/{id}")
-	    public Usuario atualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
-	    	return service.atualizar(id, usuario);
-	    }
+	@PostMapping
+	public UsuarioDTO salvar(@Valid @RequestBody UsuarioRequestDTO dto) {
+		return service.salvar(dto);
+	}
 
-	    @DeleteMapping("/{id}")
-	    public void deletar(@PathVariable Long id) {
-	        service.deletar(id);
-	    
-	
-	
+	@PutMapping("/{id}")
+	public UsuarioDTO atualizar(@PathVariable Long id, @Valid @RequestBody UsuarioRequestDTO dto) {
+		return service.atualizar(id, dto);
+	}
 
-	    }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deletar(@PathVariable Long id) {
+		service.deletar(id);
+		return ResponseEntity.noContent().build();
+	}
 }
