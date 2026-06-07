@@ -20,10 +20,10 @@ import lombok.Setter;
 @Table(name="Aluno")
 @PrimaryKeyJoinColumn(name = "id")
 public class Aluno extends Usuario {
-	
+
 	private String matricula;
-	
+
 	private String turma;
-	
+
 	private String curso;
 }
