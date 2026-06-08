@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.geometry.Insets?>
+<?xml version="1.0" encoding="UTF-8"?> <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -40,6 +38,7 @@
 
         <HBox spacing="12.0">
             <children>
+
                 <VBox spacing="5.0" HBox.hgrow="ALWAYS">
                     <children>
                         <Label text="TIPO"
@@ -75,6 +74,7 @@
 
         <HBox spacing="12.0">
             <children>
+
                 <VBox spacing="5.0" HBox.hgrow="ALWAYS">
                     <children>
                         <Label text="INÍCIO"
