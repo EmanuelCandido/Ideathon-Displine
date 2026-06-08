@@ -20,7 +20,7 @@ public class AlunoController {
     @Autowired
     private AlunoService service;
 
-    //Mapeia a requisição GET em "/Aluno", retornando os valores
+    //Mapeia a requisição GET em "/Aluno", fazendo retornar os valores
     @GetMapping
     public List<AlunoDTO> listar() {
         return service.listar();
