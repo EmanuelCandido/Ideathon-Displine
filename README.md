@@ -122,6 +122,7 @@ Funcionalidades adicionais poderão ser incorporadas em versões futuras para am
 * Emanuel Cândido da Silva
 * Arthur Andrade
 * Rainan Coelho
+* Iago Frânquel Freitas Sousa
 
 ---
 
