@@ -153,7 +153,7 @@ public class CriarEventoController {
             fecharJanela();
 
         } catch (Exception e) {
-            mostrarAlerta("Erro ao salvar", e.getMessage());
+            mostrarErroFormatado("Erro ao salvar", e.getMessage());
             e.printStackTrace();
         }
     }
@@ -196,5 +196,64 @@ public class CriarEventoController {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    private void mostrarErroFormatado(String titulo, String erroBruto) {
+        String mensagemFormatada = formatarMensagemErro(erroBruto);
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText("Não foi possível salvar o compromisso");
+
+        Label label = new Label(mensagemFormatada);
+        label.setWrapText(true);
+        label.setMaxWidth(400);
+
+        alert.getDialogPane().setContent(label);
+        alert.getDialogPane().setPrefWidth(470);
+
+        alert.showAndWait();
+    }
+
+    private String formatarMensagemErro(String erroBruto) {
+        if (erroBruto == null || erroBruto.isBlank()) {
+            return "Ocorreu um erro inesperado.";
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        if (erroBruto.contains("dataEvento")) {
+            sb.append("• A data do compromisso é obrigatória ou não pode estar no passado.\n");
+        }
+
+        if (erroBruto.contains("titulo")) {
+            sb.append("• O título é obrigatório.\n");
+        }
+
+        if (erroBruto.contains("horarioInicio")) {
+            sb.append("• O horário de início é obrigatório.\n");
+        }
+
+        if (erroBruto.contains("horarioFim")) {
+            sb.append("• O horário de fim é obrigatório.\n");
+        }
+
+        if (erroBruto.contains("tipoEvento")) {
+            sb.append("• O tipo do compromisso é obrigatório.\n");
+        }
+
+        if (erroBruto.contains("prioridade")) {
+            sb.append("• A prioridade é obrigatória.\n");
+        }
+
+        if (erroBruto.contains("idUsuario")) {
+            sb.append("• O usuário logado não foi identificado. Faça login novamente.\n");
+        }
+
+        if (sb.isEmpty()) {
+            return "Verifique os dados preenchidos e tente novamente.";
+        }
+
+        return sb.toString();
     }
 }
