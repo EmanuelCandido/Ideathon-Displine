@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="720.0" prefWidth="1200.0"
+            style="-fx-background-color: #F8F9FA;"
+            stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.displine.HelloController">
+
+    <top>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets top="30" right="25" bottom="10" left="25"/>
+            </padding>
+
+            <children>
+                <VBox spacing="6.0">
+                    <children>
+                        <Label fx:id="lblSaudacao"
+                               text="Olá!"
+                               style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #1A202C;" />
+
+                        <Label text="Confira seus compromissos e organize sua agenda."
+                               style="-fx-font-size: 14px; -fx-text-fill: #718096;" />
+                    </children>
+                </VBox>
+
+                <HBox spacing="20.0">
+                    <children>
+                        <Button fx:id="btnDashboard"
+                                text="Dashboard"
+                                onAction="#mostrarDashboard"
+                                style="-fx-text-fill: #0056C6; -fx-font-weight: bold; -fx-border-color: #0056C6; -fx-border-width: 0 0 2 0; -fx-background-color: transparent; -fx-font-size: 14px; -fx-cursor: hand;" />
+
+                        <Button fx:id="btnForum"
+                                text="Fórum de Discussão"
+                                onAction="#mostrarForum"
+                                style="-fx-text-fill: #718096; -fx-background-color: transparent; -fx-font-size: 14px; -fx-cursor: hand;" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox>
+            <padding>
+                <Insets top="15" right="25" bottom="25" left="25"/>
+            </padding>
+
+            <children>
+
+                <!-- DASHBOARD -->
+                <VBox fx:id="boxDashboard" spacing="0.0">
+                    <children>
+                        <HBox spacing="20.0">
+
+                            <!-- CALENDÁRIO -->
+                            <VBox spacing="20.0" HBox.hgrow="ALWAYS"
+                                  style="-fx-background-color: #FFFFFF; -fx-padding: 22; -fx-background-radius: 8px; -fx-border-color: #E2E8F0; -fx-border-radius: 8px;">
+
+                                <children>
+                                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                        <children>
+                                            <Label text="Calendário"
+                                                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1A202C;" />
+
+                                            <Button text="&lt;"
+                                                    onAction="#mesAnterior"
+                                                    style="-fx-background-color: transparent; -fx-text-fill: #1A202C; -fx-font-size: 13px; -fx-cursor: hand;" />
+
+                                            <Label fx:id="lblMesAno"
+                                                   text="Junho 2026"
+                                                   style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1A202C;" />
+
+                                            <Button text="&gt;"
+                                                    onAction="#proximoMes"
+                                                    style="-fx-background-color: transparent; -fx-text-fill: #1A202C; -fx-font-size: 13px; -fx-cursor: hand;" />
+
+                                            <Button text="Hoje"
+                                                    onAction="#irParaHoje"
+                                                    style="-fx-background-color: transparent; -fx-text-fill: #0056C6; -fx-font-weight: bold; -fx-cursor: hand;" />
+
+                                            <HBox HBox.hgrow="ALWAYS"/>
+
+                                            <Button text="+ Adicionar Compromisso"
+                                                    onAction="#abrirModalCriarEvento"
+                                                    style="-fx-background-color: #0056C6; -fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 9 16; -fx-background-radius: 4px; -fx-cursor: hand;" />
+                                        </children>
+                                    </HBox>
+
+                                    <GridPane fx:id="gridCalendario"
+                                              hgap="0"
+                                              vgap="0"
+                                              style="-fx-background-color: #FFFFFF; -fx-border-color: #EDF2F7;" />
+                                </children>
+                            </VBox>
+
+                            <!-- PRÓXIMOS COMPROMISSOS -->
+                            <VBox spacing="18.0" prefWidth="330.0"
+                                  style="-fx-background-color: #FFFFFF; -fx-padding: 22; -fx-background-radius: 8px; -fx-border-color: #E2E8F0; -fx-border-radius: 8px;">
+
+                                <children>
+                                    <HBox alignment="CENTER_LEFT">
+                                        <children>
+                                            <Label text="Próximos Compromissos"
+                                                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1A202C;" />
+
+                                            <HBox HBox.hgrow="ALWAYS"/>
+
+                                            <Button text="Ver todos"
+                                                    onAction="#mostrarTodosCompromissos"
+                                                    style="-fx-background-color: transparent; -fx-text-fill: #0056C6; -fx-font-size: 12px; -fx-font-weight: bold; -fx-cursor: hand;" />
+                                        </children>
+                                    </HBox>
+
+                                    <VBox fx:id="boxProximos" spacing="12.0"/>
+                                </children>
+                            </VBox>
+
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- FÓRUM -->
+                <VBox fx:id="boxForum" spacing="22.0" visible="false" managed="false">
+                    <children>
+                        <!-- O conteúdo do fórum será montado pelo HelloController -->
+                    </children>
+                </VBox>
+                <VBox fx:id="boxTodosCompromissos" spacing="18.0" visible="false" managed="false">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <children>
+                                <Button text="&lt; Voltar"
+                                        onAction="#mostrarDashboard"
+                                        style="-fx-background-color: transparent; -fx-text-fill: #0056C6; -fx-font-weight: bold; -fx-cursor: hand;" />
+
+                                <Label text="Todos os Compromissos"
+                                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1A202C;" />
+                            </children>
+                        </HBox>
+
+                        <VBox fx:id="boxListaTodosCompromissos" spacing="12.0"/>
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </center>
+
+</BorderPane>

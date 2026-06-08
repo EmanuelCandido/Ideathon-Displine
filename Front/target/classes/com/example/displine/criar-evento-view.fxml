@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefWidth="520.0"
+      spacing="16.0"
+      style="-fx-background-color: #FFFFFF; -fx-padding: 28;"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.displine.CriarEventoController">
+
+    <children>
+
+        <VBox spacing="4.0">
+            <children>
+                <Label text="Compromisso"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1A202C;" />
+                <Label text="Preencha os dados do compromisso"
+                       style="-fx-font-size: 13px; -fx-text-fill: #718096;" />
+            </children>
+        </VBox>
+
+        <VBox spacing="5.0">
+            <children>
+                <Label text="TÍTULO"
+                       style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #718096;" />
+                <TextField fx:id="txtTitulo"
+                           promptText="Ex: Prova de Algoritmos"
+                           style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E1; -fx-border-radius: 4px; -fx-padding: 10;" />
+            </children>
+        </VBox>
+
+        <HBox spacing="12.0">
+            <children>
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label text="TIPO"
+                               style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #718096;" />
+                        <ComboBox fx:id="comboTipo"
+                                  maxWidth="1.7976931348623157E308"
+                                  promptText="Selecionar"
+                                  style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E1; -fx-border-radius: 4px; -fx-padding: 6;" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label text="MATÉRIA"
+                               style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #718096;" />
+                        <TextField fx:id="txtMateria"
+                                   promptText="Ex: Algoritmos"
+                                   style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E1; -fx-border-radius: 4px; -fx-padding: 10;" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <VBox spacing="5.0">
+            <children>
+                <Label text="DATA"
+                       style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #718096;" />
+                <DatePicker fx:id="datePicker"
+                            maxWidth="1.7976931348623157E308"
+                            style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E1; -fx-border-radius: 4px;" />
+            </children>
+        </VBox>
+
+        <HBox spacing="12.0">
+            <children>
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label text="INÍCIO"
+                               style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #718096;" />
+                        <TextField fx:id="txtInicio"
+                                   promptText="Ex: 14:00"
+                                   style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E1; -fx-border-radius: 4px; -fx-padding: 10;" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label text="FIM"
+                               style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #718096;" />
+                        <TextField fx:id="txtFim"
+                                   promptText="Ex: 16:00"
+                                   style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E1; -fx-border-radius: 4px; -fx-padding: 10;" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <VBox spacing="8.0">
+            <children>
+                <Label text="PRIORIDADE"
+                       style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #718096;" />
+
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="btnFacil" text="Fácil" onAction="#selecionarPrioridade"
+                                style="-fx-background-color: #FFFFFF; -fx-text-fill: #4A5568; -fx-border-color: #CBD5E1; -fx-border-radius: 6px; -fx-background-radius: 6px;" />
+                        <Button fx:id="btnMedio" text="Médio" onAction="#selecionarPrioridade"
+                                style="-fx-background-color: #FFFFFF; -fx-text-fill: #4A5568; -fx-border-color: #CBD5E1; -fx-border-radius: 6px; -fx-background-radius: 6px;" />
+                        <Button fx:id="btnAlto" text="Alto" onAction="#selecionarPrioridade"
+                                style="-fx-background-color: #FFFFFF; -fx-text-fill: #4A5568; -fx-border-color: #CBD5E1; -fx-border-radius: 6px; -fx-background-radius: 6px;" />
+                        <Button fx:id="btnUrgente" text="Urgente" onAction="#selecionarPrioridade"
+                                style="-fx-background-color: #FFFFFF; -fx-text-fill: #4A5568; -fx-border-color: #CBD5E1; -fx-border-radius: 6px; -fx-background-radius: 6px;" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <VBox spacing="5.0">
+            <children>
+                <Label text="DESCRIÇÃO"
+                       style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #718096;" />
+                <TextArea fx:id="txtDescricao"
+                          prefRowCount="4"
+                          promptText="Detalhes do compromisso"
+                          style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E1; -fx-border-radius: 4px; -fx-padding: 8;" />
+            </children>
+        </VBox>
+
+        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <children>
+                <Button fx:id="btnCancelar"
+                        text="Cancelar"
+                        onAction="#fecharJanela"
+                        style="-fx-background-color: #FFFFFF; -fx-text-fill: #4A5568; -fx-border-color: #CBD5E1; -fx-border-radius: 4px; -fx-background-radius: 4px; -fx-padding: 10 18;" />
+
+                <Button text="Salvar"
+                        onAction="#salvarEvento"
+                        style="-fx-background-color: #0056C6; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 4px; -fx-padding: 10 22;" />
+            </children>
+        </HBox>
+
+    </children>
+</VBox>
