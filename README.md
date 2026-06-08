@@ -70,38 +70,40 @@ O projeto foi desenvolvido seguindo o padrão arquitetural **MVC (Model-View-Con
 
 * Java Development Kit (JDK) 21
 * PostgreSQL instalado e configurado
-* JavaFX configurado no ambiente de desenvolvimento
+* pgAdmin
 * IDE compatível com Java (IntelliJ IDEA, Eclipse ou NetBeans)
+* JavaFX configurado no ambiente
 
-### Clonando o Repositório
+### Passo a Passo
 
-```bash
-git clone https://github.com/EmanuelCandido/Ideathon-Displine.git
-```
+1. Baixe o repositório em formato **.zip**.
 
-### Abrindo o Projeto
+2. Extraia os arquivos para uma pasta de sua preferência.
 
-1. Acesse a branch **Principal**.
-2. Abra a pasta **Front** na sua IDE de preferência.
-3. Configure o JDK 21 como SDK do projeto.
-4. Configure as dependências do JavaFX.
-5. Configure a conexão com o banco de dados PostgreSQL.
-6. Execute a classe principal da aplicação.
+3. Abra sua IDE e importe/abra a pasta **Displine**.
 
-### Estrutura do Repositório
+4. Configure a conexão com o PostgreSQL, ajustando:
+
+   * Usuário do banco de dados;
+   * Senha;
+   * Porta utilizada pelo PostgreSQL;
+   * Demais parâmetros de conexão, se necessário.
+
+5. Após a configuração do banco de dados, acesse a pasta:
 
 ```text
-Ideathon-Displine
-│
-├── Front/      # Interface gráfica e aplicação JavaFX
-└── ...
+Front
 ```
+
+6. Localize a classe **Launcher** e execute-a para iniciar a aplicação.
 
 ### Observações
 
-* O sistema foi desenvolvido utilizando Java 21.
-* É necessário que o PostgreSQL esteja em execução para acesso aos dados da aplicação.
+* O projeto foi desenvolvido utilizando **Java 21**.
+* Certifique-se de que o PostgreSQL esteja em execução antes de iniciar o sistema.
+* É necessário que o JavaFX esteja corretamente configurado na IDE.
 * A versão atual corresponde a um MVP (Minimum Viable Product) e ainda está em desenvolvimento.
+
 
 ---
 
