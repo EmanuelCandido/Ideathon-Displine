@@ -74,6 +74,12 @@ O projeto foi desenvolvido seguindo o padrão arquitetural **MVC (Model-View-Con
 * IDE compatível com Java (IntelliJ IDEA, Eclipse ou NetBeans)
 * JavaFX configurado no ambiente
 
+### Tutorial em Vídeo
+
+Caso prefira acompanhar uma demonstração prática da instalação e execução do projeto, assista ao vídeo abaixo:
+
+**🎥 Vídeo de configuração e execução:** *https://youtu.be/5f8wO_f6NCA*
+
 ### Passo a Passo
 
 1. Baixe o repositório em formato **.zip**.
