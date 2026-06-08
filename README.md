@@ -86,32 +86,79 @@ Caso prefira acompanhar uma demonstração prática da instalação e execução
 
 2. Extraia os arquivos para uma pasta de sua preferência.
 
-3. Abra sua IDE e importe/abra a pasta **Displine**.
+3. O projeto possui duas partes principais:
 
-4. Configure a conexão com o PostgreSQL, ajustando:
+```text
+displine
+```
 
-   * Usuário do banco de dados;
-   * Senha;
-   * Porta utilizada pelo PostgreSQL;
-   * Demais parâmetros de conexão, se necessário.
-
-5. Após a configuração do banco de dados, acesse a pasta:
+Responsável pelo **back-end** da aplicação.
 
 ```text
 Front
 ```
 
-6. Localize a classe **Launcher** e execute-a para iniciar a aplicação.
+Responsável pelo **front-end** da aplicação.
+
+4. Abra cada parte como um projeto separado na IDE.
+
+   Primeiro, abra a pasta:
+
+```text
+displine
+```
+
+   Essa janela da IDE será utilizada para executar o back-end.
+
+5. Em outra janela da IDE, abra a pasta:
+
+```text
+Front
+```
+
+   Essa segunda janela será utilizada para executar o front-end.
+
+6. Configure a conexão com o PostgreSQL no projeto back-end, ajustando:
+
+   * Usuário do banco de dados;
+   * Senha;
+   * Porta utilizada pelo PostgreSQL;
+   * Nome do banco de dados;
+   * Demais parâmetros de conexão, se necessário.
+
+7. No projeto back-end, localizado na pasta **displine**, encontre a classe:
+
+```text
+DisplineApplication
+```
+
+8. Execute a classe **DisplineApplication** para iniciar o back-end da aplicação.
+
+9. Aguarde o back-end iniciar completamente. Ele deve permanecer em execução durante o uso do sistema.
+
+10. Com o back-end em execução, vá para a outra janela da IDE, onde está aberto o projeto **Front**.
+
+11. No projeto front-end, localizado na pasta **Front**, encontre a classe:
+
+```text
+Launcher
+```
+
+12. Execute a classe **Launcher** para iniciar a aplicação JavaFX.
 
 ### Observações
 
 * O projeto foi desenvolvido utilizando **Java 21**.
 * Certifique-se de que o PostgreSQL esteja em execução antes de iniciar o sistema.
+* O back-end deve ser executado antes do front-end.
+* O back-end e o front-end devem ser abertos como projetos separados na IDE.
+* Recomenda-se utilizar duas janelas da IDE: uma para o projeto **displine** e outra para o projeto **Front**.
+* O front-end depende do back-end em execução para realizar login, cadastro e gerenciamento dos compromissos.
 * É necessário que o JavaFX esteja corretamente configurado na IDE.
 * A versão atual corresponde a um MVP (Minimum Viable Product) e ainda está em desenvolvimento.
 
-
 ---
+
 
 ## 📈 Status do Projeto
 
