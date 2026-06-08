@@ -25,7 +25,8 @@ public class CadastroController {
                 "Informática",
                 "Redes de Computadores",
                 "Eletrotécnica",
-                "Mecânica"
+                "Mecânica",
+                "Engenharia de Software"
         );
     }
 
@@ -59,11 +60,13 @@ public class CadastroController {
 
             ApiClient.post("/Aluno", json);
 
-            mostrarAlerta("Sucesso", "Cadastro realizado com sucesso!");
+            mostrarSucesso("Cadastro realizado com sucesso!");
+
             abrirDashboard();
 
         } catch (Exception e) {
-            mostrarErroFormatado("Erro ao cadastrar", e.getMessage());
+            mostrarErro(formatarErroCadastro(e.getMessage()));
+            e.printStackTrace();
         }
     }
 
@@ -82,7 +85,8 @@ public class CadastroController {
             stageAtual.close();
 
         } catch (IOException e) {
-            mostrarAlerta("Erro", "Não foi possível abrir o dashboard.");
+            mostrarErro("Não foi possível abrir o dashboard.");
+            e.printStackTrace();
         }
     }
 
@@ -92,47 +96,40 @@ public class CadastroController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) btnCadastrar.getScene().getWindow();
+
             stage.setTitle("Displine - Login");
             stage.setScene(scene);
 
         } catch (IOException e) {
-            mostrarAlerta("Erro", "Não foi possível abrir a tela de login.");
+            mostrarErro("Não foi possível abrir a tela de login.");
+            e.printStackTrace();
         }
     }
 
-    private void mostrarAlerta(String titulo, String mensagem) {
+    private void mostrarSucesso(String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sucesso");
+        alert.setHeaderText("Operação realizada com sucesso");
+        alert.setContentText(mensagem);
+        alert.showAndWait();
+    }
+
+    private void mostrarErro(String mensagem) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(titulo);
+        alert.setTitle("Erro");
         alert.setHeaderText("Verifique os campos abaixo:");
 
         Label label = new Label(mensagem);
         label.setWrapText(true);
-        label.setMaxWidth(350);
+        label.setMaxWidth(400);
 
         alert.getDialogPane().setContent(label);
-        alert.getDialogPane().setPrefWidth(420);
+        alert.getDialogPane().setPrefWidth(480);
 
         alert.showAndWait();
     }
 
-    private void mostrarErroFormatado(String titulo, String erroBruto) {
-        String mensagemFormatada = formatarMensagemErro(erroBruto);
-
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(titulo);
-        alert.setHeaderText("Não foi possível concluir o cadastro");
-
-        Label label = new Label(mensagemFormatada);
-        label.setWrapText(true);
-        label.setMaxWidth(380);
-
-        alert.getDialogPane().setContent(label);
-        alert.getDialogPane().setPrefWidth(450);
-
-        alert.showAndWait();
-    }
-
-    private String formatarMensagemErro(String erroBruto) {
+    private String formatarErroCadastro(String erroBruto) {
         if (erroBruto == null || erroBruto.isBlank()) {
             return "Ocorreu um erro inesperado.";
         }
@@ -140,26 +137,38 @@ public class CadastroController {
         StringBuilder sb = new StringBuilder();
 
         if (erroBruto.contains("nome")) {
-            sb.append("• O nome é obrigatório\n");
+            sb.append("• O nome é obrigatório.\n");
         }
+
         if (erroBruto.contains("email")) {
-            sb.append("• O e-mail é obrigatório\n");
+            sb.append("• Informe um e-mail válido.\n");
         }
-        if (erroBruto.contains("matricula")) {
-            sb.append("• A matrícula é obrigatória\n");
-        }
-        if (erroBruto.contains("turma")) {
-            sb.append("• A turma é obrigatória\n");
-        }
-        if (erroBruto.contains("curso")) {
-            sb.append("• O curso é obrigatório\n");
-        }
+
         if (erroBruto.contains("senha")) {
-            sb.append("• A senha deve ter no mínimo 4 caracteres\n");
+            sb.append("• A senha é obrigatória e precisa ter no mínimo 4 caracteres.\n");
+        }
+
+        if (erroBruto.contains("matricula")) {
+            sb.append("• A matrícula é obrigatória.\n");
+        }
+
+        if (erroBruto.contains("turma")) {
+            sb.append("• A turma é obrigatória.\n");
+        }
+
+        if (erroBruto.contains("curso")) {
+            sb.append("• Selecione um curso.\n");
+        }
+
+        if (erroBruto.contains("duplicate")
+                || erroBruto.contains("duplicar")
+                || erroBruto.contains("unique")
+                || erroBruto.contains("constraint")) {
+            sb.append("• Já existe um cadastro com esse e-mail ou matrícula.\n");
         }
 
         if (sb.isEmpty()) {
-            return erroBruto;
+            return "Não foi possível realizar o cadastro.\nVerifique os dados informados e tente novamente.";
         }
 
         return sb.toString();
